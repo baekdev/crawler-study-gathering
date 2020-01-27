@@ -1,0 +1,24 @@
+name: 'crawler_study_gathering'
+
+on:
+  schedule:
+    - cron: '0 13,21 * * *'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python
+      uses: actions/setup-python@v1
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install beautifulsoup4
+        pip install pytz
+        pip install PyGithub
+    - name: Run Crawler
+      run: |
+        python crawler.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GithubToken }}
