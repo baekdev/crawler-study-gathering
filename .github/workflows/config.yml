@@ -2,7 +2,7 @@ name: 'crawler_study_gathering'
 
 on:
   schedule:
-    - cron: '0 13/21 * * *'
+    - cron: '0 6/22 * * *' # UTC
 
 jobs:
   run:
