@@ -21,11 +21,14 @@ today = date.strftime("%Y-%m-%d")
 
 for row in article_list:
     title = row.select('div > h5 > a')[0]
-    published_at = row.select('div > div > div > div > span.timeago')[0].get_text()
+    published_at = row.select('div > div > div > div > span.timeago')[0].get_text()    
+    item = published_at + " " +  str(title).replace('href="','href="' + site).replace("\n", "").replace('  ', '').strip() + '<br/>\n'
     if '마감' not in str(title) and today in published_at:
-        issue_body += published_at + " " +  str(title).replace('href="','href="' + site).replace("\n", "").replace('  ', '').strip() + '<br/>\n'
+        issue_body += item
+    else: 
+        print('[filtered] ', item)
 
-# ----------------------------------------------------------------------
+print('----------------------------------------------------------------------')
 
 issue_title = "스터디 모집 글 모음(%s)" % (date.strftime("%Y년 %m월 %d일 %H시"))
 print(issue_title)
