@@ -2,7 +2,8 @@ name: 'crawler_study_gathering'
 
 on:
   schedule:
-    - cron: '0 9 * * *'
+    #- cron: '0 9 * * *'
+      - cron: '5 * * * *'
 
 jobs:
   run:
