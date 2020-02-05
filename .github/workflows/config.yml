@@ -17,6 +17,7 @@ jobs:
         pip install beautifulsoup4
         pip install pytz
         pip install PyGithub
+        pip install python-dateutil
     - name: Run Crawler
       run: |
         python crawler.py
